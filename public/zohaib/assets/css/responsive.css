@@ -1,0 +1,164 @@
+/*================================ 
+  #RESPONSIVE CSS 
+====================================*/
+
+/* Tablet Layout: 768px.*/
+ @media only screen and (min-width: 768px) and (max-width: 991px) {
+     .welcome-content {
+         padding-top: 60px;
+    }
+     .about-area .thumb img {
+         margin-bottom: 30px;
+    }
+     .fun-factor-area .item {
+         margin-bottom: 50px;
+    }
+     .fun-factor-area {
+         padding-bottom: 50px;
+    }
+     .blog-area .item-box {
+         margin-bottom: 30px;
+    }
+     .blog-area .item-box:last-child {
+         margin-bottom: 0;
+    }
+     .contact-info-area .item {
+         margin-bottom: 50px;
+    }
+     .contact-info-area .item:last-child {
+         margin-bottom: 0;
+    }
+    .breadcrumb-area {
+      padding-bottom: 80px;
+      padding-top: 220px;
+    }
+    .about-area .about-text {
+      padding-left: 15px;
+    }
+}
+
+/* Mobile Layout: 320px. */
+ @media only screen and (max-width: 767px) {
+    /* Heading */
+     h1 {
+         font-size: 37px;
+    }
+     h2 {
+         font-size: 30px;
+    }
+     h3 {
+         font-size: 28px;
+    }
+     h4 {
+         font-size: 24px;
+    }
+     h5 {
+         font-size: 20px;
+    }
+     h6 {
+         font-size: 18px;
+    }
+     .container-pull {
+         width: 100%;
+         padding-left: 15px;
+         padding-right: 15px;
+    }
+     .welcome-content {
+         padding-top: 60px;
+    }
+     .welcome-content h1 {
+         font-size: 40px;
+    }
+     .welcome-banner .welcome-content h2 {
+         font-size: 24px;
+    }
+     .default-padding {
+         padding: 50px 0;
+    }
+     .about-area .thumb img {
+         margin-bottom: 30px;
+    }
+     .about-area .about-text h2 {
+         margin-bottom: 10px;
+    }
+     .services-area.default-padding {
+         padding-bottom: 20px;
+    }
+     .timeline::before {
+         left: 10px;
+    }
+     .entry .title::before {
+         left: 1px;
+         right: auto;
+    }
+     .entry .title {
+         float: none;
+         padding-left: 30px;
+         padding-right: 0;
+         width: 100%;
+         text-align: left;
+    }
+     .entry .content {
+         padding-left: 30px;
+         width: 100%;
+         float: none;
+    }
+     .timeline {
+         padding-left: 20px;
+    }
+     .timeline::before {
+         left: 30px;
+    }
+     .fun-factor-area .item {
+         margin-bottom: 50px;
+    }
+     .fun-factor-area .item:last-child {
+         margin-bottom: 0;
+    }
+     .portfolio-area.default-padding {
+         padding-bottom: 30px;
+    }
+     .testimonial-items {
+         padding: 0 30px;
+    }
+     .testimonial-items .owl-nav .owl-next {
+         left: auto;
+         right: 7px;
+    }
+     .testimonial-items .owl-nav .owl-prev {
+         left: 30px;
+    }
+     .blog-area .item-box {
+         margin-bottom: 30px;
+    }
+     .blog-area .item-box:last-child {
+         margin-bottom: 0;
+    }
+     .contact-info-area .item {
+         margin-bottom: 50px;
+    }
+     .contact-info-area .item:last-child {
+         margin-bottom: 0;
+    }
+     .comments-list .commen-item.reply {
+         padding-left: 0;
+    }
+    .breadcrumb-area {
+      padding-bottom: 80px;
+      padding-top: 200px;
+    }
+    .about-area .about-text {
+      padding-left: 15px;
+    }
+}
+
+/* Ultra-wide: keep content from stretching endlessly */
+@media only screen and (min-width: 1800px) {
+  .welcome-content-portrait {
+    max-width: 680px;
+  }
+
+  .experience-timeline {
+    max-width: 1040px;
+  }
+}
