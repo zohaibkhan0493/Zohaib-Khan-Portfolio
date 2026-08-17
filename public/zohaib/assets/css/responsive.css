@@ -112,7 +112,7 @@
      .fun-factor-area .item {
          margin-bottom: 50px;
     }
-     .fun-factor-area .item:last-child {
+     .fun-factor-area .item:nth-last-child(-n + 2) {
          margin-bottom: 0;
     }
      .portfolio-area.default-padding {

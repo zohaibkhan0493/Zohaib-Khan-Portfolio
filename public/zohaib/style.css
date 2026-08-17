@@ -1732,8 +1732,8 @@ footer {
   width: 100%;
   height: auto;
   object-fit: cover;
-  aspect-ratio: 16 / 10;
-  object-position: center center;
+  aspect-ratio: 3 / 4;
+  object-position: center top;
   background: #111;
 }
 
@@ -2374,7 +2374,7 @@ body {
   }
 
   .about-area .thumb img {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 4;
   }
 
   .title h2 {
@@ -2437,7 +2437,7 @@ body {
     margin-bottom: 36px;
   }
 
-  .fun-factor-modern .row > .item:last-child {
+  .fun-factor-modern .row > .item:nth-last-child(-n + 2) {
     margin-bottom: 0;
   }
 
