@@ -1737,6 +1737,14 @@ footer {
   background: #111;
 }
 
+.about-area ul.socials li a[aria-label="WhatsApp"] .fa-whatsapp {
+  font-size: 1.25em;
+}
+
+.about-area ul.socials li a[aria-label="WhatsApp"]:hover {
+  color: #25d366;
+}
+
 @media (max-width: 991px) {
   .hero-shell .hero-media {
     justify-content: center;
@@ -2659,7 +2667,185 @@ body {
   }
 }
 
+/* ============================================================
+   Scroll to top — progress ring button
+   ============================================================ */
+.scroll-top-btn {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 999;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 10px 28px rgba(4, 22, 55, 0.14);
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(18px) scale(0.92);
+  --fill-progress: 0%;
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+}
 
+.scroll-top-btn.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
 
+.scroll-top-btn:hover {
+  box-shadow: 0 14px 34px rgba(38, 103, 255, 0.28);
+  transform: translateY(-3px) scale(1.06);
+}
+
+.scroll-top-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.scroll-top-liquid {
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(38, 103, 255, 0.08);
+}
+
+.scroll-top-liquid::before,
+.scroll-top-liquid::after {
+  content: "";
+  position: absolute;
+  left: -12%;
+  width: 124%;
+  height: 124%;
+  border-radius: 40%;
+  background: linear-gradient(180deg, #7eb0ff 0%, #2667ff 65%, #1a4fd6 100%);
+  top: calc(100% - var(--fill-progress));
+  transition: top 0.18s linear;
+}
+
+.scroll-top-liquid::before {
+  animation: scroll-liquid-wave 5.6s linear infinite;
+  opacity: 0.92;
+}
+
+.scroll-top-liquid::after {
+  animation: scroll-liquid-wave 7.5s linear infinite reverse;
+  opacity: 0.45;
+  margin-top: 8px;
+}
+
+.scroll-top-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  display: none;
+}
+
+.scroll-top-track,
+.scroll-top-progress {
+  fill: none;
+  stroke-width: 3;
+}
+
+.scroll-top-track {
+  stroke: rgba(38, 103, 255, 0.16);
+}
+
+.scroll-top-progress {
+  stroke: #2667ff;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.12s linear;
+}
+
+.scroll-top-icon {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  /* Icon colors are handled by the two layered <i> elements below */
+  color: transparent;
+  font-size: 24px;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.scroll-top-btn:hover .scroll-top-icon {
+  transform: translateY(-2px);
+}
+
+.scroll-top-icon i {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.scroll-top-icon-base,
+.scroll-top-icon-filled {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.scroll-top-icon-base {
+  color: #2667ff;
+}
+
+.scroll-top-icon-filled {
+  color: #ffffff;
+  /* Only show the submerged portion (bottom-up) */
+  clip-path: inset(calc(100% - var(--fill-progress, 0%)) 0 0 0);
+}
+
+@keyframes scroll-liquid-wave {
+  from {
+    transform: translateX(0) rotate(0deg);
+  }
+  to {
+    transform: translateX(2%) rotate(360deg);
+  }
+}
+
+@media (max-width: 767px) {
+  .scroll-top-btn {
+    right: 18px;
+    bottom: 18px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .scroll-top-icon {
+    font-size: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-top-btn,
+  .scroll-top-liquid::before,
+  .scroll-top-liquid::after,
+  .scroll-top-progress,
+  .scroll-top-icon {
+    transition: none !important;
+  }
+
+  .scroll-top-liquid::before,
+  .scroll-top-liquid::after {
+    animation: none !important;
+  }
+}
 
 

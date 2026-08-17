@@ -383,6 +383,47 @@
     sync();
   }
 
+  /* ---- Scroll to top with progress ring ---- */
+  function initScrollTopBtn() {
+    var btn = document.getElementById("scrollTopBtn");
+    if (!btn) return;
+
+    var progress = btn.querySelector(".scroll-top-progress");
+    var radius = 24;
+    var circumference = 2 * Math.PI * radius;
+
+    if (progress) {
+      progress.style.strokeDasharray = String(circumference);
+      progress.style.strokeDashoffset = String(circumference);
+    }
+
+    var update = function () {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = docHeight > 0 ? Math.min(1, Math.max(0, scrollTop / docHeight)) : 0;
+
+      btn.classList.toggle("is-visible", scrollTop > 280);
+      btn.style.setProperty("--fill-progress", Math.round(pct * 100) + "%");
+
+      if (progress) {
+        progress.style.strokeDashoffset = String(circumference * (1 - pct));
+      }
+    };
+
+    btn.addEventListener("click", function () {
+      if (prefersReducedMotion) {
+        window.scrollTo(0, 0);
+        return;
+      }
+
+      $("html, body").stop().animate({ scrollTop: 0 }, 700, "easeInOutCubic");
+    });
+
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+    update();
+  }
+
   $(document).ready(function () {
     markRevealTargets();
     initScrollReveal();
@@ -393,6 +434,7 @@
     initServiceTilt();
     initCertificationsSwiper();
     initHeroParallax();
+    initScrollTopBtn();
 
     if (!$(".loader-inner").length) {
       $(".se-pre-con").html(
