@@ -56,15 +56,26 @@ export async function POST(request: Request) {
       }),
     });
 
-    const data = await response.json();
+    let data: { message?: string; success?: boolean } = {};
+    try {
+      data = await response.json();
+    } catch {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Unexpected response from email service. Please try again.",
+        },
+        { status: 502 }
+      );
+    }
 
-    if (!response.ok) {
+    if (!response.ok || data.success === false) {
       return NextResponse.json(
         {
           success: false,
           message: data?.message || "Something went wrong. Please try again.",
         },
-        { status: response.status }
+        { status: response.ok ? 400 : response.status }
       );
     }
 
@@ -72,9 +83,18 @@ export async function POST(request: Request) {
       success: true,
       message: data?.message || "Thanks — your message was sent successfully.",
     });
-  } catch {
+  } catch (error) {
+    const detail =
+      process.env.NODE_ENV === "development" && error instanceof Error
+        ? error.message
+        : undefined;
     return NextResponse.json(
-      { success: false, message: "Network error. Please try again." },
+      {
+        success: false,
+        message: detail
+          ? `Network error: ${detail}`
+          : "Network error. Please try again.",
+      },
       { status: 500 }
     );
   }
